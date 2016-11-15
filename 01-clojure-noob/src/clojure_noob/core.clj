@@ -6,3 +6,8 @@
   [number]
   (+ number 100))
 
+(defn dec-maker
+  "Creates a custom decrementer"
+  [decrement-by]
+  #(- % decrement-by))
+
