@@ -11,3 +11,8 @@
   [decrement-by]
   #(- % decrement-by))
 
+(defn mapset
+  "Creates a set from applying a function to a coll."
+  [fun my-coll]
+  (set (map fun my-coll)))
+
