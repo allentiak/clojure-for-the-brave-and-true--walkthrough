@@ -1,7 +1,8 @@
 (ns clojure-noob.core
   (:gen-class))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defn add100
+  "Adds 100 to the number passed as arg"
+  [number]
+  (+ number 100))
+
