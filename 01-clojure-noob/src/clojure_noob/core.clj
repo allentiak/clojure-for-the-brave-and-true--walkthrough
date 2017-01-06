@@ -36,16 +36,15 @@
                              {:name "left-lower-leg" :size 3}
                              {:name "left-achilles" :size 1}
                              {:name "left-foot" :size 2}])
-
 (defn matching-part
   [part]
   {:name (clojure.string/replace (:name part) #"^left-" "right-")
    :size (:size part)})
 
-(defn matching-parts
+(defn five-matching-parts
   [part]
-  {:name (clojure.string/replace (:name part) #"^left-" "right-")
-   :size (:size part)})
+  (matching-part (part))
+  {:name xyz :size (:size part)})
 
 (defn better-symmetrize-body-parts
   "Expects a seq of maps that have a :name and :size"
@@ -59,6 +58,6 @@
   "Expects a seq of maps that have a :name and :size"
   [asym-body-parts]
   (reduce (fn [final-body-parts part]
-            (into final-body-parts (set [part (matching-parts part)]))) 
+            (into final-body-parts (set [part (five-matching-parts part)]))) 
           []
           asym-body-parts))
