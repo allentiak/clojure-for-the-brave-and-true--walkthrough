@@ -65,3 +65,13 @@
           []
           asym-body-parts))
 
+
+;Exercise 3.6
+
+(defn multiply-body-parts
+  "Expects a seq of maps that have a :name and a :size and a number to multiply by"
+  [asym-body-parts times]
+  (reduce (fn [final-body-parts part]
+            (into final-body-parts (set [part (matsh-to part)])))
+          []
+          asym-body-parts))
