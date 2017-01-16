@@ -69,14 +69,14 @@
 ;Exercise 3.6
 
 (defn nth-matching-part
+  "Expects the original part and the index to match. 0 matches to self."
   [part n]
-  {:name (clojure.string/replace (:name part) #"^left-" (str n "th-"))
-   :size (:size part)})
+  (if (> n 0) {:name (clojure.string/replace (:name part) #"^left-" (str n "th-")) :size (:size part)} part))
 
 (defn multiply-body-parts
   "Expects a seq of maps that have a :name and a :size and a number to multiply by"
   [asym-body-parts times]
   (reduce (fn [final-body-parts part]
-            (into final-body-parts (set [part (map (partial nth-matching-part part) (range 1 (inc times)))])))
+            (into final-body-parts (map (partial nth-matching-part part) (range 0 (inc times)))))
           []
           asym-body-parts))
