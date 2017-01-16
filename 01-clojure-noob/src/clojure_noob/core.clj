@@ -61,7 +61,7 @@
   "Expects a seq of maps that have a :name and :size"
   [asym-body-parts]
   (reduce (fn [final-body-parts part]
-            (into final-body-parts (set [part (match-to part "right-")(match-to part "forward-")(match-to part "backward-")(match-to part "fifth-")])))
+            (into final-body-parts (set (map (partial match-to part) '("right-" "forward-" "backward-" "fifth-")))))
           []
           asym-body-parts))
 
