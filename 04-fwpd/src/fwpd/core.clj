@@ -14,3 +14,9 @@
 (defn convert
   [vamp-key value]
   ((get conversions vamp-key) value))
+
+(defn parse
+  "Convert a CSV into rows of columns"
+  [string]
+  (map #(clojure.string/split % #",")
+       (clojure.string/split string #"\n")))
