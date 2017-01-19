@@ -22,7 +22,7 @@
        (clojure.string/split string #"\n")))
 
 (defn mapify
-  "Return a seq of maps like {:name \"Edward Cullen\" :glitter-index 10}"
+  "Convert a seq of rows (vectors) of string pairs into a seq of maps like {:name \"Edward Cullen\" :glitter-index 10}"
   [rows]
   (map (fn [unmapped-row]
          (reduce (fn [row-map [vamp-key value]]
@@ -32,5 +32,6 @@
        rows))
 
 (defn glitter-filter
+  "Filter a seq of record maps, returning those with glitter-index higher than minimum-glitter"
   [minimum-glitter records]
   (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
