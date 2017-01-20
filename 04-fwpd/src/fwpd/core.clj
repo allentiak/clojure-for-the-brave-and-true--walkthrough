@@ -39,3 +39,6 @@
 (defn append
   [suspects-list {:keys [name glitter-index] :as new-suspect}]
   (conj suspects-list new-suspect))
+
+(defn validate?
+  [keywords-list record])
