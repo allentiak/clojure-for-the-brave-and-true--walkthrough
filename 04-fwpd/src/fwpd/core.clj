@@ -35,3 +35,7 @@
   "Filter a seq of record maps, returning those with glitter-index higher than minimum-glitter"
   [minimum-glitter records]
   (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
+
+(defn append
+  [suspects-list {:keys [name glitter-index] :as new-suspect}]
+  (conj suspects-list new-suspect))
