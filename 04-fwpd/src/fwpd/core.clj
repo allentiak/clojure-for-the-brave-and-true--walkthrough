@@ -41,4 +41,5 @@
   (conj suspects-list new-suspect))
 
 (defn validate?
-  [keywords-list record])
+  [keywords-list record]
+  (map #(false? (nil? %)) keywords-list))
