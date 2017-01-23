@@ -42,4 +42,4 @@
 
 (defn validate?
   [keywords-list record]
-  (map #(false? (nil? %)) keywords-list))
+  (every? #(true? %) (vec (map #(false? (nil? (% record))) keywords-list))))
