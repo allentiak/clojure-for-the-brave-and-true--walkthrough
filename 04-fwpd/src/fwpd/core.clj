@@ -41,5 +41,6 @@
   (conj suspects-list new-suspect))
 
 (defn validate?
+  "Verify whether a record contains all its keywords"
   [keywords-list record]
   (every? #(true? %) (vec (map #(false? (nil? (% record))) keywords-list))))
