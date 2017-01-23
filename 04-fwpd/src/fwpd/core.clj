@@ -44,3 +44,9 @@
   "Verify whether a record contains all its keywords"
   [keywords-list record]
   (every? #(true? %) (vec (map #(false? (nil? (% record))) keywords-list))))
+
+(defn unmapify
+  "Convert a seq of record maps into a seq of rows of columns"
+  [maps]
+  ;; Guess the column headers
+  (vec (map #(clojure.string/replace % #"^:""") (keys (first maps)))))
