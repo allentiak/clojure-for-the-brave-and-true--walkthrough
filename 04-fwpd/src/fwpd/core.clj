@@ -44,7 +44,7 @@
 
 ;; Exercise 4.3
 (defn validate?
-  "Verify whether a record contains all its keywords"
+  "Verify whether a record contains all of its keywords"
   [keywords-list record]
   (every? #(true? %) (vec (map #(false? (nil? (% record))) keywords-list))))
 
