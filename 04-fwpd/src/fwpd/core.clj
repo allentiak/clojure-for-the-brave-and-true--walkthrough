@@ -48,9 +48,24 @@
   [keywords-list record]
   (every? #(true? %) (vec (map #(false? (nil? (% record))) keywords-list))))
 
+
 ;; Exercise 4.4
+
+(def deconversions {:name identity
+                    :glitter-index int->str})
+(defn deconvert
+  [vamp-key value]
+  ((get deconversions vamp-key) value))
+
+(defn int->str
+  [integer]
+  (str integer))
+
 (defn unmapify
   "Convert a seq of record maps into a seq of rows of columns"
   [maps]
   ;; Guess the column headers
-  (vec (map #(clojure.string/replace % #"^:""") (keys (first maps)))))
+  (let keys-vector (vec (map #(clojure.string/replace % #"^:" "") (keys (first maps)))))
+  (let my-record (first keys-vector))
+  (map deconvert keys-vector my-record))
+;; for each key in keys-vector, take each value from the map, convert it according to 'deconversions', put all of them into a vector, and make a seq of those vectors
