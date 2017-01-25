@@ -66,7 +66,7 @@
   [maps]
   ;; Guess the column headers
   (def keys-vector (keys (first maps)))
-  (reduce (fn [final-seq my-record]
-            (into final-seq (vec (map deconvert keys-vector (map #(%1 my-record) keys-vector)))))
-          ()
-          maps))
+  (def my-record (first maps))
+  (reduce (fn []
+            (vec (map deconvert keys-vector (map #(%1 my-record) keys-vector))))
+          ()))
