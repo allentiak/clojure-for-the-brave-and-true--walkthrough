@@ -67,3 +67,9 @@
   (def keys-vector (keys (first map-seq)))
   ;; FIXME: consider using reduce?
   (map (fn [map-element] (vec (map deconvert keys-vector (map (fn [key] (key map-element)) keys-vector)))) map-seq))
+
+(defn unparse
+  "Convert a rows of columns into a CSV"
+  [vector-seq]
+  (map #(clojure.string/interpose % #"\n")
+       (clojure.string/interpose vector-seq #",")))
