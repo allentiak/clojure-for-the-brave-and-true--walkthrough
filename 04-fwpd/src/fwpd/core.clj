@@ -65,7 +65,8 @@
   "Convert a seq of record maps into a seq of rows of columns"
   [maps]
   ;; Guess the column headers
-  (let keys-vector (keys (first maps)))
-  (def my-record (first maps))
-  (vec (map #(deconvert %1 (%1 my-record) keys-vector))))
-;; for each key in keys-vector, take each value from the map, convert it according to 'deconversions', put all of them into a vector, and make a seq of those vectors
+  (def keys-vector (keys (first maps)))
+  (reduce (fn [final-seq my-record]
+            (into final-seq (vec (map deconvert keys-vector (map #(%1 my-record) keys-vector)))))
+          ()
+          maps))
