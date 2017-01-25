@@ -65,7 +65,7 @@
   "Convert a seq of record maps into a seq of rows of columns"
   [maps]
   ;; Guess the column headers
-  (let keys-vector (vec (map #(clojure.string/replace % #"^:" "") (keys (first maps)))))
-  (let my-record (first keys-vector))
-  (map deconvert keys-vector my-record))
+  (let keys-vector (keys (first maps)))
+  (def my-record (first maps))
+  (vec (map #(deconvert %1 (%1 my-record) keys-vector))))
 ;; for each key in keys-vector, take each value from the map, convert it according to 'deconversions', put all of them into a vector, and make a seq of those vectors
