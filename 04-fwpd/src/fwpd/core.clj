@@ -63,10 +63,7 @@
 
 (defn unmapify
   "Convert a seq of record maps into a seq of rows of columns"
-  [maps]
-  ;; Guess the column headers
-  (def keys-vector (keys (first maps)))
-  (def my-record (first maps))
-  (reduce (fn []
-            (vec (map deconvert keys-vector (map #(%1 my-record) keys-vector))))
-          ()))
+  [map-seq]
+  (def keys-vector (keys (first map-seq)))
+  ;; FIXME: consider using reduce?
+  (map (fn [map-element] (vec (map deconvert keys-vector (map (fn [key] (key map-element)) keys-vector)))) map-seq))
