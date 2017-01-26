@@ -71,5 +71,4 @@
 (defn unparse
   "Convert a rows of columns into a CSV"
   [vector-seq]
-  (map #(clojure.string/interpose % #"\n")
-       (clojure.string/interpose vector-seq #",")))
+  (clojure.string/join "\n" (map #(clojure.string/join "," %) vector-seq)))
