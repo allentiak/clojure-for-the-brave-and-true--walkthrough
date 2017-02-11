@@ -32,5 +32,6 @@ FIXME: listing of options this app accepts.
 
 Copyright © 2016 FIXME
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+~~Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.~~
+_(Not really. The EPL is simply the default license from the template used for this exercise. For the actual license, see the repository's root directory.)_
