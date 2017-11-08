@@ -1,22 +1,27 @@
 (ns clojure-noob.core
   (:gen-class))
 
+;; Exercise 3.2
 (defn add100
   "Adds 100 to the number passed as arg"
   [number]
   (+ number 100))
 
+;; Exercise 3.3
 (defn dec-maker
   "Creates a custom decrementer"
   [decrement-by]
   #(- % decrement-by))
 
+;; Exercise 3.4
 (defn mapset
   "Creates a set from applying a function to a coll."
   [fun my-coll]
   (set (map fun my-coll)))
 
-; "Hobbit violence"
+
+;; "Hobbit violence"
+
 (def asym-hobbit-body-parts [{:name "head" :size 3}
                              {:name "left-eye" :size 1}
                              {:name "left-ear" :size 1}
@@ -45,12 +50,12 @@
   "Expects a seq of maps that have a :name and :size"
   [asym-body-parts]
   (reduce (fn [final-body-parts part]
-            (into final-body-parts (set [part (matching-part part)])))
+           (into final-body-parts (set [part (matching-part part)])))
           []
           asym-body-parts))
 
 
-;Exercise 3.5
+;;Exercise 3.5
 
 (defn match-to
   [part part-that-matches]
@@ -61,13 +66,13 @@
   "Expects a seq of maps that have a :name and :size"
   [asym-body-parts]
   (reduce (fn [final-body-parts part]
-            (into final-body-parts
-                  (into #{part} (map (partial match-to part) '("right-" "forward-" "backward-" "fifth-")))))
-          []
-          asym-body-parts))
+           (into final-body-parts
+            (into #{part} (map (partial match-to part) '("right-" "forward-" "backward-" "fifth-")))))
+   []
+   asym-body-parts))
 
 
-;Exercise 3.6
+;;Exercise 3.6
 
 (defn nth-matching-part
   "Expects the original part and the index to match. 0 matches to self."
@@ -78,6 +83,6 @@
   "Expects a seq of maps that have a :name and a :size and a number to multiply by"
   [asym-body-parts times]
   (reduce (fn [final-body-parts part]
-            (into final-body-parts (map (partial nth-matching-part part) (range 0 (inc times)))))
-          []
-          asym-body-parts))
+           (into final-body-parts (map (partial nth-matching-part part) (range 0 (inc times)))))
+    []
+    asym-body-parts))
