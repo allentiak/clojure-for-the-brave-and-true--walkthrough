@@ -1,6 +1,9 @@
 (ns clojure-noob.core
   (:gen-class))
 
+
+;;; Chapter 3
+
 ;; Exercise 3.2
 (defn add100
   "Adds 100 to the number passed as arg"
@@ -55,7 +58,7 @@
           asym-body-parts))
 
 
-;;Exercise 3.5
+;; Exercise 3.5
 
 (defn match-to
   [part part-that-matches]
@@ -72,7 +75,7 @@
    asym-body-parts))
 
 
-;;Exercise 3.6
+;; Exercise 3.6
 
 (defn nth-matching-part
   "Expects the original part and the index to match. 0 matches to self."
@@ -86,3 +89,20 @@
            (into final-body-parts (map (partial nth-matching-part part) (range 0 (inc times)))))
     []
     asym-body-parts))
+
+
+
+;;; Chapter 5
+
+
+;; "Character"
+
+(def character
+  {:name "Smooches McCutes"
+   :attributes {:intelligence 10
+                :strength 4
+                :dexterity 5}})
+
+(def c-int (comp :intelligence :attributes))
+(def c-str (comp :strength :attributes))
+(def c-dex (comp :dexterity :attributes))
