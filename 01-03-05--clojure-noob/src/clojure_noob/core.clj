@@ -134,6 +134,17 @@
   (fn [& args]
     (f (apply g args))))
 
+(defn my-comp
+  ([]
+   identity)
+  ([f & g]
+   (loop [fn1 f
+          fns g]
+     (if (empty? fns)
+       fn1
+       (recur (fn [& args]
+                (fn1 (apply (first fns) args))) (rest fns))))))
+
 
 ;; Excercise 5.3
 ;; Implement the assoc-in function.
