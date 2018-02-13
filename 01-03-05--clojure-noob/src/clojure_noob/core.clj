@@ -122,3 +122,24 @@
 (defn attr
   [attrib]
   ((comp attrib :attributes) character))
+
+
+;; Excercise 5.2
+;; Implement the comp function.
+
+;; Clojure’s comp function can compose any number of functions. To get a hint of how it does this, here’s an implementation that composes just two functions:
+
+(defn two-comp
+  [f g]
+  (fn [& args]
+    (f (apply g args))))
+
+
+;; Excercise 5.3
+;; Implement the assoc-in function.
+;; Hint: use the assoc function and define its parameters as [m [k & ks] v])
+
+
+;; Excercises 5.4 and 5.5
+;; Look up and use the update-in function.
+;; Implement update-in.
