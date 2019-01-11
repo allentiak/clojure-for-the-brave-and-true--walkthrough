@@ -117,7 +117,7 @@
 
 
 ;; Excercise 5.1
-;; You used (comp :intelligence :attributes) to create a function that returns a character’s intelligence. Create a new function, attr, that you can call like (attr :intelligence) and that does the same thing.
+;; You used (comp :intelligence :attributes) to create a function that returns a character's intelligence. Create a new function, attr, that you can call like (attr :intelligence) and that does the same thing.
 
 (defn attr
   [attrib]
@@ -127,7 +127,7 @@
 ;; Excercise 5.2
 ;; Implement the comp function.
 
-;; Clojure’s comp function can compose any number of functions. To get a hint of how it does this, here’s an implementation that composes just two functions:
+;; Clojure's comp function can compose any number of functions. To get a hint of how it does this, here's an implementation that composes just two functions:
 
 (defn two-comp
   [f g]
