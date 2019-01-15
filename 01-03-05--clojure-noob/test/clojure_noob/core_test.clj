@@ -9,17 +9,17 @@
 
 ;; Exercise 3.2
 (deftest add100-test
-  (is (= (add100 1) 101))
-  (is (= (add100 -100) 0)))
+  (is (= 101 (add100 1)))
+  (is (= 0 (add100 -100))))
 
 ;; Exercise 3.3
 (deftest dec-maker-test
-  (is (= ((dec-maker 100) 101) 1))
-  (is (= ((dec-maker 100) 0) -100)))
+  (is (= 1 ((dec-maker 100) 101)))
+  (is (= -100 ((dec-maker 100) 0))))
 
 ;; Exercise 3.4
 (deftest mapset-test
-  (is (= (mapset inc [1 1 2 2]) #{2 3})))
+  (is (= #{2 3} (mapset inc [1 1 2 2]))))
 
 
 ;;; Chapter 3
@@ -33,8 +33,8 @@
   (let [sym-body-part {:name "head" :size 3}
         asym-body-part {:name "left-eye" :size 1}
         symmed-body-part {:name "other-eye" :size 1}]
-      (is (= (match-to sym-body-part "other-") (identity sym-body-part)))
-      (is (= (match-to asym-body-part "other-") symmed-body-part))))
+      (is (= (identity sym-body-part) (match-to sym-body-part "other-")))
+      (is (= symmed-body-part (match-to asym-body-part "other-")))))
 
 (deftest multiply-by-five-body-parts-test
   (let [asym-body-parts   [{:name "head" :size 3}
@@ -45,7 +45,7 @@
                            {:name "forward-eye" :size 1}
                            {:name "backward-eye" :size 1}
                            {:name "fifth-eye" :size 1}]]
-    (is (= (multiply-by-five-body-parts asym-body-parts) symmed-body-parts))))
+    (is (= symmed-body-parts (multiply-by-five-body-parts asym-body-parts)))))
 
 
 ;; Exercise 3.6
@@ -55,11 +55,11 @@
         asym-body-part  {:name "left-eye" :size 1}
         nth1-body-part  {:name "1th-eye" :size 1}
         nth2-body-part  {:name "2th-eye" :size 1}]
-    (is (= (nth-matching-part sym-body-part -1) sym-body-part))
-    (is (= (nth-matching-part sym-body-part 0) sym-body-part))
-    (is (= (nth-matching-part sym-body-part 1) sym-body-part))
-    (is (= (nth-matching-part sym-body-part 2) sym-body-part))
-    (is (= (nth-matching-part asym-body-part -1) asym-body-part))
-    (is (= (nth-matching-part asym-body-part 0) asym-body-part))
-    (is (= (nth-matching-part asym-body-part 1) nth1-body-part))
-    (is (= (nth-matching-part asym-body-part 2) nth2-body-part))))
+    (is (= sym-body-part (nth-matching-part sym-body-part -1)))
+    (is (= sym-body-part (nth-matching-part sym-body-part 0)))
+    (is (= sym-body-part (nth-matching-part sym-body-part 1)))
+    (is (= sym-body-part (nth-matching-part sym-body-part 2)))
+    (is (= asym-body-part (nth-matching-part asym-body-part -1)))
+    (is (= asym-body-part (nth-matching-part asym-body-part 0)))
+    (is (= nth1-body-part (nth-matching-part asym-body-part 1)))
+    (is (= nth2-body-part (nth-matching-part asym-body-part 2)))))
