@@ -46,3 +46,20 @@
                            {:name "backward-eye" :size 1}
                            {:name "fifth-eye" :size 1}]]
     (is (= (multiply-by-five-body-parts asym-body-parts) symmed-body-parts))))
+
+
+;; Exercise 3.6
+
+(deftest nth-matching-part-test
+  (let [sym-body-part   {:name "head" :size 3}
+        asym-body-part  {:name "left-eye" :size 1}
+        nth1-body-part  {:name "1th-eye" :size 1}
+        nth2-body-part  {:name "2th-eye" :size 1}]
+    (is (= (nth-matching-part sym-body-part -1) sym-body-part))
+    (is (= (nth-matching-part sym-body-part 0) sym-body-part))
+    (is (= (nth-matching-part sym-body-part 1) sym-body-part))
+    (is (= (nth-matching-part sym-body-part 2) sym-body-part))
+    (is (= (nth-matching-part asym-body-part -1) asym-body-part))
+    (is (= (nth-matching-part asym-body-part 0) asym-body-part))
+    (is (= (nth-matching-part asym-body-part 1) nth1-body-part))
+    (is (= (nth-matching-part asym-body-part 2) nth2-body-part))))
