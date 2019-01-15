@@ -78,11 +78,10 @@
 ;; Exercise 3.6
 
 (defn nth-matching-part
-  "Expects the original part and the nth to match. 0 matches to self."
+  "Expects the original part and the absolute nth to match. 0 matches to self."
   [part n]
-  (if (> n 0)
-    {:name (clojure.string/replace (:name part) #"^left-" (str n "th-")) :size (:size part)}
-    part))
+  (if (zero? n) part
+    (match-to part (str (Math/abs n) "th-"))))
 
 (defn multiply-body-parts
   "Expects a seq of maps that have a :name and a :size and a number to multiply by"

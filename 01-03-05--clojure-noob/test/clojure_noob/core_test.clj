@@ -59,7 +59,7 @@
     (is (= sym-body-part (nth-matching-part sym-body-part 0)))
     (is (= sym-body-part (nth-matching-part sym-body-part 1)))
     (is (= sym-body-part (nth-matching-part sym-body-part 2)))
-    (is (= asym-body-part (nth-matching-part asym-body-part -1)))
+    (is (= nth1-body-part (nth-matching-part asym-body-part -1)))
     (is (= asym-body-part (nth-matching-part asym-body-part 0)))
     (is (= nth1-body-part (nth-matching-part asym-body-part 1)))
     (is (= nth2-body-part (nth-matching-part asym-body-part 2)))))
