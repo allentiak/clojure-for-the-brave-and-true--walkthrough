@@ -84,12 +84,18 @@
     (match-to part (str (Math/abs n) "th-"))))
 
 (defn multiply-body-parts
-  "Expects a seq of maps that have a :name and a :size and a number to multiply by"
+  "Expects a seq of maps that have a :name and a :size and a number to multiply by. 0 or negative returns an empty list. 1 returns the part."
   [asym-body-parts times]
-  (reduce (fn [final-body-parts part]
-           (into final-body-parts (map (partial nth-matching-part part) (range 0 (inc times)))))
-    []
-    asym-body-parts))
+  (cond
+    (< times 0) nil
+    (= times 0) nil
+    (= times 1) asym-body-parts
+    (> times 1) (reduce (fn [final-body-parts part]
+                          (into final-body-parts
+                                (into #{part}
+                                      (map (partial nth-matching-part part) (range 2 (inc times))))))
+                  []
+                  asym-body-parts)))
 
 
 
