@@ -63,3 +63,20 @@
     (is (= asym-body-part (nth-matching-part asym-body-part 0)))
     (is (= nth1-body-part (nth-matching-part asym-body-part 1)))
     (is (= nth2-body-part (nth-matching-part asym-body-part 2)))))
+
+
+(deftest multiply-body-parts-test
+  (let [asym-body-parts  [{:name "head" :size 3}
+                          {:name "left-eye" :size 1}]
+        nth2-body-parts  [{:name "head" :size 3}
+                          {:name "left-eye" :size 1}
+                          {:name "2th-eye" :size 1}]
+        nth3-body-parts  [{:name "head" :size 3}
+                          {:name "left-eye" :size 1}
+                          {:name "2th-eye" :size 1}
+                          {:name "3th-eye" :size 1}]]
+    (is (= nil (multiply-body-parts asym-body-parts -1)))
+    (is (= nil (multiply-body-parts asym-body-parts 0)))
+    (is (= asym-body-parts (multiply-body-parts asym-body-parts 1)))
+    (is (= nth2-body-parts (multiply-body-parts asym-body-parts 2)))
+    (is (= nth3-body-parts (multiply-body-parts asym-body-parts 3)))))
