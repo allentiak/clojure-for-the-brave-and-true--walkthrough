@@ -53,7 +53,7 @@
   "Expects a seq of maps that have a :name and :size"
   [asym-body-parts]
   (reduce (fn [final-body-parts part]
-           (into final-body-parts (set [part (matching-part part)])))
+            (into final-body-parts (set [part (matching-part part)])))
           []
           asym-body-parts))
 
@@ -69,10 +69,11 @@
   "Expects a seq of maps that have a :name and :size"
   [asym-body-parts]
   (reduce (fn [final-body-parts part]
-           (into final-body-parts
-            (into #{part} (map (partial match-to part) '("right-" "forward-" "backward-" "fifth-")))))
-   []
-   asym-body-parts))
+            (into final-body-parts
+                  (into #{part}
+                        (map (partial match-to part) '("right-" "forward-" "backward-" "fifth-")))))
+          []
+          asym-body-parts))
 
 
 ;; Exercise 3.6
@@ -81,7 +82,7 @@
   "Expects the original part and the absolute nth to match. 0 matches to self."
   [part n]
   (if (zero? n) part
-    (match-to part (str (Math/abs n) "th-"))))
+      (match-to part (str (Math/abs n) "th-"))))
 
 (defn multiply-body-parts
   "Expects a seq of maps that have a :name and a :size and a number to multiply by. 0 or negative returns an empty list. 1 returns the part."
