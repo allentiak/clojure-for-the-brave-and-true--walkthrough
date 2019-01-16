@@ -56,14 +56,14 @@
                            :glitter-index int->str}]
     ((get deconversions vamp-key) value)))
 
+(defn unparse
+  "Convert a rows of columns into a CSV"
+  [vector-seq]
+  (clojure.string/join "\n" (map #(clojure.string/join "," %) vector-seq)))
+
 (defn unmapify
   "Convert a seq of record maps into a seq of rows of columns"
   [map-seq]
   (def keys-vector (keys (first map-seq)))
   ;; FIXME: consider using reduce?
   (map (fn [map-element] (vec (map deconvert keys-vector (map (fn [key] (key map-element)) keys-vector)))) map-seq))
-
-(defn unparse
-  "Convert a rows of columns into a CSV"
-  [vector-seq]
-  (clojure.string/join "\n" (map #(clojure.string/join "," %) vector-seq)))
