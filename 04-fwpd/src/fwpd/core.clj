@@ -1,19 +1,14 @@
 (ns fwpd.core)
 
-(def filename "suspects.csv")
-
-(def vamp-keys [:name :glitter-index])
-
 (defn str->int
   [str]
   (Integer. str))
 
-(def conversions {:name identity
-                  :glitter-index str->int})
-
 (defn convert
   [vamp-key value]
-  ((get conversions vamp-key) value))
+  (let [conversions {:name identity
+                     :glitter-index str->int}]
+    ((get conversions vamp-key) value)))
 
 (defn parse
   "Convert a CSV into rows of columns"
@@ -28,7 +23,7 @@
          (reduce (fn [row-map [vamp-key value]]
                    (assoc row-map vamp-key (convert vamp-key value)))
                  {}
-                 (map vector vamp-keys unmapped-row)))
+                 (map vector [:name :glitter-index] unmapped-row)))
        rows))
 
 ;; Exercise 4.1
@@ -51,15 +46,15 @@
 
 ;; Exercise 4.4
 
-(def deconversions {:name identity
-                    :glitter-index int->str})
-(defn deconvert
-  [vamp-key value]
-  ((get deconversions vamp-key) value))
-
 (defn int->str
   [integer]
   (str integer))
+
+(defn deconvert
+  [vamp-key value]
+  (let [deconversions {:name identity
+                           :glitter-index int->str}]
+    ((get deconversions vamp-key) value)))
 
 (defn unmapify
   "Convert a seq of record maps into a seq of rows of columns"
